@@ -3,7 +3,7 @@ import sqlite3
 
 app = Flask(__name__)
 
-DATABASE = 'cadastros.db'
+DATABASE = 'banco.db'
 
 def get_db():
     conn = sqlite3.connect(DATABASE)
@@ -21,8 +21,14 @@ def init_db():
 def contato():
     return render_template('contato.html')
 
-@app.route('/cadastrar', methods=['POST'])
+@app.route('/cadastro', methods=['GET'])
+def exibir_formulario_cadastro():
+    """Exibe o formulário de cadastro."""
+    return render_template('cadastro_form.html')
+
+@app.route('/cadastro', methods=['POST'])
 def cadastrar():
+    """Processa os dados do formulário de cadastro."""
     if request.method == 'POST':
         nome = request.form['nome']
         telefone = request.form['telefone']
@@ -43,4 +49,4 @@ def cadastrar():
 
 if __name__ == '__main__':
     init_db()
-    app.run(debug=True)
+    app.run(debug=True, port=5500) # Especificar a porta aqui
