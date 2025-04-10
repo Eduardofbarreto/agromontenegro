@@ -6,7 +6,7 @@ body {
     font-family: 'Open Sans', sans-serif; /* Aplicando a fonte para o corpo do texto */
     margin: 0;
     padding: 0;
-    background-color: #F5F5DC; /* Bege claro de fundo */
+    background-color: #ef7120; /* Bege claro de fundo */
     color: #333; /* Cor do texto principal */
 }
 
@@ -21,8 +21,8 @@ body {
 
 /* Cabeçalho */
 header {
-    background-color: #556B2F; /* Verde musgo */
-    color: #f3ecec;
+    background-color: #030100; /* Verde musgo */
+    color: #ef7120;
     padding: 1em 0;
     text-align: center;
     border-radius: 8px 8px 0 0;
@@ -49,13 +49,13 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #8c9196; /* Cinza ardósia para os links */
+    color: #ef7120; /* Cinza ardósia para os links */
     text-decoration: none;
     font-weight: bold;
 }
 
 nav ul li a:hover {
-    color: #556B2F; /* Verde musgo ao passar o mouse */
+    color: #f6f7f6; /* Verde musgo ao passar o mouse */
 }
 
 /* Seções principais */
@@ -78,7 +78,7 @@ main section h2 {
 
 /* Rodapé */
 footer {
-    background-color: #708090; /* Cinza ardósia para o rodapé */
+    background-color: #000000; /* Cinza ardósia para o rodapé */
     color: #fff;
     text-align: center;
     padding: 1em 0;
@@ -110,7 +110,7 @@ footer {
 }
 
 #contato-info h2 {
-    color: #556B2F; /* Verde musgo */
+    color: #ef7120; /* Verde musgo */
     margin-top: 0;
     margin-bottom: 15px;
     font-family: 'Oswald', sans-serif;
@@ -193,7 +193,7 @@ footer {
 }
 
 #contato-info .button {
-    background-color: #5cb85c; /* Verde para o botão */
+    background-color: #ef7120; /* Verde para o botão */
     color: #fff;
     padding: 10px 20px;
     border: none;
