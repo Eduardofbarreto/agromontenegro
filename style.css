@@ -1,0 +1,101 @@
+/* Importando as fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
+
+/* Estilos globais */
+body {
+    font-family: 'Open Sans', sans-serif; /* Aplicando a fonte para o corpo do texto */
+    margin: 0;
+    padding: 0;
+    background-color: #F5F5DC; /* Bege claro de fundo */
+    color: #333; /* Cor do texto principal */
+}
+
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff; /* Fundo branco para o conteúdo principal */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Cabeçalho */
+header {
+    background-color: #556B2F; /* Verde musgo */
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+}
+
+header h1 {
+    font-family: 'Oswald', sans-serif; /* Aplicando a fonte para o título */
+    margin: 0;
+    font-size: 2.5em; /* Aumentando um pouco o tamanho */
+    font-weight: 700; /* Deixando em negrito */
+}
+
+/* Navegação */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #708090; /* Cinza ardósia para os links */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #556B2F; /* Verde musgo ao passar o mouse */
+}
+
+/* Seções principais */
+main section {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+main section:last-child {
+    border-bottom: none;
+}
+
+main section h2 {
+    font-family: 'Oswald', sans-serif; /* Aplicando a fonte para os títulos das seções */
+    color: #A0522D; /* Marrom terra para os títulos das seções */
+    margin-top: 0;
+    font-size: 2em;
+    font-weight: 400; /* Peso normal para o título da seção */
+}
+
+/* Rodapé */
+footer {
+    background-color: #708090; /* Cinza ardósia para o rodapé */
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+    border-radius: 0 0 8px 8px;
+    font-size: 0.9em;
+    margin-top: 20px;
+}
+
+/* Estilos específicos para o conteúdo (você pode ajustar conforme necessário) */
+#inicio p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #555; /* Um tom um pouco mais claro para o texto principal */
+}
+
+#contato address {
+    font-style: normal;
+    line-height: 1.5;
+    color: #555;
+}
