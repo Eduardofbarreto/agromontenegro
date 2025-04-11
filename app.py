@@ -2,7 +2,6 @@ from flask import Flask, request, render_template
 import sqlite3
 
 app = Flask(__name__)
-
 DATABASE = 'banco.db'
 
 def get_db():
@@ -17,9 +16,29 @@ def init_db():
             db.cursor().executescript(f.read())
         db.commit()
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/racoes-e-pets')
+def racoes_e_pets():
+    return render_template('racoes-e-pets.html')
+
+@app.route('/sementes')
+def sementes():
+    return render_template('sementes.html')
+
+@app.route('/ferragem')
+def ferragem():
+    return render_template('ferragem.html')
+
 @app.route('/contato')
 def contato():
     return render_template('contato.html')
+
+@app.route('/novidades')
+def novidades():
+    return render_template('novidades.html')
 
 @app.route('/cadastro', methods=['GET'])
 def exibir_formulario_cadastro():
@@ -49,4 +68,4 @@ def cadastrar():
 
 if __name__ == '__main__':
     init_db()
-    app.run(debug=True, port=5500) # Especificar a porta aqui
+    app.run(debug=True, port=5500)
