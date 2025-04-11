@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novidades/Ofertas - AgroFerragem</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Agroferragem Montenegro</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Início</a></li>
+                    <li><a href="{{ url_for('racoes_e_pets') }}">Rações e Pets</a></li>
+                    <li><a href="{{ url_for('sementes') }}">Sementes</a></li>
+                    <li><a href="{{ url_for('ferragem') }}">Ferragem</a></li>
+                    <li><a href="{{ url_for('contato') }}">Contato</a></li>
+                    <li><a href="{{ url_for('novidades') }}">Novidades/Ofertas</a></li>
+                    <li><a href="{{ url_for('login') }}">Login</a></li> </ul>
+            </nav>
+    </header>
+</body>
+</html>

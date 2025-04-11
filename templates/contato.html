@@ -9,16 +9,16 @@
 <body>
     <header>
         <h1>Agroferragem Montenegro</h1>
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('index') }}">Início</a></li>
-                <li><a href="{{ url_for('racoes_e_pets') }}">Rações e Pets</a></li>
-                <li><a href="{{ url_for('sementes') }}">Sementes</a></li>
-                <li><a href="{{ url_for('ferragem') }}">Ferragem</a></li>
-                <li><a href="{{ url_for('contato') }}">Contato</a></li>
-                <li><a href="{{ url_for('novidades') }}">Novidades/Ofertas</a></li>
-            </ul>
-        </nav>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Início</a></li>
+                    <li><a href="{{ url_for('racoes_e_pets') }}">Rações e Pets</a></li>
+                    <li><a href="{{ url_for('sementes') }}">Sementes</a></li>
+                    <li><a href="{{ url_for('ferragem') }}">Ferragem</a></li>
+                    <li><a href="{{ url_for('contato') }}">Contato</a></li>
+                    <li><a href="{{ url_for('novidades') }}">Novidades/Ofertas</a></li>
+                    <li><a href="{{ url_for('login') }}">Login</a></li> </ul>
+            </nav>
     </header>
 
     <main class="container">
@@ -66,28 +66,32 @@
     
             <h3>Formulário de Cadastro</h3>
                 <p>Preencha os campos abaixo para se cadastrar:</p>
-                <form action="cadastro" method="post">
-                    <div class="form-group">
-                        <label for="nome">Nome Completo:</label>
+                <form method="POST" action="{{ url_for('cadastrar') }}">
+                    <div>
+                        <label for="nome">Nome:</label>
                         <input type="text" id="nome" name="nome" required>
                     </div>
-                    <div class="form-group">
+                    <div>
                         <label for="telefone">Telefone:</label>
-                        <input type="tel" id="telefone" name="telefone" required>
+                        <input type="tel" id="telefone" name="telefone">
                     </div>
-                    <div class="form-group">
+                    <div>
                         <label for="cpf">CPF:</label>
                         <input type="text" id="cpf" name="cpf" required>
                     </div>
-                    <div class="form-group">
-                        <label for="email">E-mail:</label>
+                    <div>
+                        <label for="email">Email:</label>
                         <input type="email" id="email" name="email" required>
                     </div>
-                    <div class="form-group">
-                        <label for="nascimento">Data de Nascimento: </label>
+                    <div>
+                        <label for="aniversario">Data de Aniversário:</label>
                         <input type="date" id="aniversario" name="aniversario">
                     </div>
-                    <button type="submit" class="button">Cadastrar</button>
+                    <div>
+                        <label for="senha">Senha:</label>
+                        <input type="password" id="senha" name="senha" required>
+                    </div>
+                    <button type="submit">Cadastrar</button>
                 </form>
         </section>
     

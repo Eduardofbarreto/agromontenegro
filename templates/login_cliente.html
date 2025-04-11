@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login de Cliente</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Login de Cliente</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Início</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2>Acesse sua conta</h2>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <form method="POST" action="{{ url_for('login_cliente') }}">
+            <div>
+                <label for="identificador">Email ou CPF:</label>
+                <input type="text" id="identificador" name="identificador" required>
+            </div>
+            <div>
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required>
+            </div>
+            <button type="submit">Entrar</button>
+        </form>
+        <p>Ainda não tem uma conta? <a href="{{ url_for('exibir_formulario_cadastro') }}">Cadastre-se</a></p>
+    </main>
+
+    <footer>
+    </footer>
+</body>
+</html>
