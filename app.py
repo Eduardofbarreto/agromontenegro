@@ -1,68 +1,68 @@
 from flask import Flask, request, render_template, redirect, url_for
 import sqlite3
 import logging
-from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
-from werkzeug.security import generate_password_hash, check_password_hash
+# from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user # Removido
+from werkzeug.security import generate_password_hash, check_password_hash # Mantenho generate_password_hash se usado no cadastro
 
 app = Flask(__name__, template_folder='templates')
 app.config['SECRET_KEY'] = 'sua_chave_secreta_aqui'
 
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = 'login_cliente' # Redireciona para a página de login do cliente
+# login_manager = LoginManager() # Removido
+# login_manager.init_app(app) # Removido
+# login_manager.login_view = 'login_cliente' # Removido
 
-class Cliente(UserMixin):
-    def __init__(self, id, email, cpf):
-        self.id = id
-        self.email = email
-        self.cpf = cpf
+# class Cliente(UserMixin): # Removido
+#     def __init__(self, id, email, cpf):
+#         self.id = id
+#         self.email = email
+#         self.cpf = cpf
 
-@login_manager.user_loader
-def load_user(user_id):
-    conn = get_db()
-    cursor = conn.cursor()
-    cursor.execute("SELECT id, email, cpf FROM cadastros WHERE id = ?", (user_id,))
-    cliente_data = cursor.fetchone()
-    conn.close()
-    if cliente_data:
-        return Cliente(cliente_data['id'], cliente_data['email'], cliente_data['cpf'])
-    return None
+# @login_manager.user_loader # Removido
+# def load_user(user_id): # Removido
+#     conn = get_db()
+#     cursor = conn.cursor()
+#     cursor.execute("SELECT id, email, cpf FROM cadastros WHERE id = ?", (user_id,))
+#     cliente_data = cursor.fetchone()
+#     conn.close()
+#     if cliente_data:
+#         return Cliente(cliente_data['id'], cliente_data['email'], cliente_data['cpf'])
+#     return None
 
-@app.route('/login-cliente', methods=['GET', 'POST'])
-def login_cliente():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
+# @app.route('/login-cliente', methods=['GET', 'POST']) # Removido
+# def login_cliente(): # Removido
+#     if current_user.is_authenticated:
+#         return redirect(url_for('index'))
 
-    error = None
-    if request.method == 'POST':
-        identificador = request.form['identificador']
-        senha = request.form['senha']
+#     error = None
+#     if request.method == 'POST':
+#         identificador = request.form['identificador']
+#         senha = request.form['senha']
 
-        conn = get_db()
-        cursor = conn.cursor()
-        cursor.execute("SELECT id, email, cpf, senha FROM cadastros WHERE email = ? OR cpf = ?", (identificador, identificador))
-        cliente_data = cursor.fetchone()
-        conn.close()
+#         conn = get_db()
+#         cursor = conn.cursor()
+#         cursor.execute("SELECT id, email, cpf, senha FROM cadastros WHERE email = ? OR cpf = ?", (identificador, identificador))
+#         cliente_data = cursor.fetchone()
+#         conn.close()
 
-        if cliente_data and check_password_hash(cliente_data['senha'], senha):
-            cliente = Cliente(cliente_data['id'], cliente_data['email'], cliente_data['cpf'])
-            login_user(cliente)
-            return redirect(url_for('cliente_area'))
-        else:
-            error = 'Email/CPF ou senha incorretos'
+#         if cliente_data and check_password_hash(cliente_data['senha'], senha):
+#             cliente = Cliente(cliente_data['id'], cliente_data['email'], cliente_data['cpf'])
+#             login_user(cliente)
+#             return redirect(url_for('cliente_area'))
+#         else:
+#             error = 'Email/CPF ou senha incorretos'
 
-    return render_template('login_cliente.html', error=error)
+#     return render_template('login_cliente.html', error=error)
 
-@app.route('/cliente-area')
-@login_required
-def cliente_area():
-    return render_template('cliente_area.html', cliente=current_user)
+# @app.route('/cliente-area') # Removido
+# @login_required # Removido
+# def cliente_area(): # Removido
+#     return render_template('cliente_area.html', cliente=current_user)
 
-@app.route('/logout-cliente')
-@login_required
-def logout_cliente():
-    logout_user()
-    return redirect(url_for('index'))
+# @app.route('/logout-cliente') # Removido
+# @login_required # Removido
+# def logout_cliente(): # Removido
+#     logout_user()
+#     return redirect(url_for('index'))
 
 DATABASE = 'banco.db'
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -116,16 +116,15 @@ def cadastrar():
         telefone = request.form['telefone']
         cpf = request.form['cpf']
         email = request.form['email']
-        aniversario = request.form['aniversario']
-        senha = request.form['senha']
-        senha_hash = generate_password_hash(senha)
+        aniversario_dia = request.form.get('aniversario_dia')
+        aniversario_mes = request.form.get('aniversario_mes')
 
         conn = get_db()
         cursor = conn.cursor()
         mensagem = ""
         try:
-            sql = "INSERT INTO cadastros (nome, telefone, cpf, email, aniversario, senha) VALUES (?, ?, ?, ?, ?, ?)"
-            cursor.execute(sql, (nome, telefone, cpf, email, aniversario, senha_hash))
+            sql = "INSERT INTO cadastros (nome, telefone, cpf, email, aniversario_dia, aniversario_mes) VALUES (?, ?, ?, ?, ?, ?)"
+            cursor.execute(sql, (nome, telefone, cpf, email, aniversario_dia, aniversario_mes))
             conn.commit()
             mensagem = "Cadastro realizado com sucesso!"
         except sqlite3.IntegrityError as e:
@@ -133,7 +132,7 @@ def cadastrar():
             mensagem = f"Erro ao cadastrar: {e}"
         finally:
             conn.close()
-        return render_template('cadastro_resultado.html', mensagem=mensagem)
+        return render_template('cadastro_resultado.html', mensagem=mensagem, aniversario_dia=aniversario_dia, aniversario_mes=aniversario_mes) # Passe as variáveis para o template
 
 if __name__ == '__main__':
     init_db()

@@ -3,7 +3,8 @@ CREATE TABLE IF NOT EXISTS cadastros (
     nome TEXT NOT NULL,
     telefone TEXT,
     cpf TEXT UNIQUE NOT NULL,
-    email TEXT UNIQUE,
-    aniversario TEXT,
-    senha TEXT NOT NULL -- Adicionando a coluna para a senha
+    email TEXT, -- Alterado para TEXT (permite NULL por padrão em SQLite)
+    aniversario_dia INTEGER, -- Nova coluna para o dia
+    aniversario_mes INTEGER -- Nova coluna para o mês
+    -- REMOVIDO: senha TEXT NOT NULL
 );
