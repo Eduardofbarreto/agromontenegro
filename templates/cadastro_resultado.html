@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultado do Cadastro</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Resultado do Cadastro</h1>
-    <p>{{ mensagem }}</p>
-    <p><a href="/cadastro">Voltar ao Formulário de Cadastro</a></p>
+    <div class="container">
+        <h1>{{ mensagem }}</h1>
+        {% if mensagem == "Cadastro realizado com sucesso!" %}
+            <p>Seu cadastro foi realizado com sucesso!</p>
+            {% if aniversario %}
+                <p>Data de Aniversário: {{ aniversario }}</p>
+            {% endif %}
+        {% endif %}
+        <p><a href="/contato">Voltar ao Formulário de Cadastro</a></p>
+    </div>
 </body>
 </html>

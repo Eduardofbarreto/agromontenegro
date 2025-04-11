@@ -11,12 +11,12 @@
         <h1>Agroferragem Montenegro</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="racoes-e-pets.html">Rações e Pets</a></li>
-                <li><a href="sementes.html">Sementes</a></li>
-                <li><a href="ferragem.html">Ferragem</a></li>
-                <li><a href="contato.html">Contato</a></li>
-                <li><a href="novidades.html">Novidades/Ofertas</a></li>
+                <li><a href="{{ url_for('index') }}">Início</a></li>
+                <li><a href="{{ url_for('racoes_e_pets') }}">Rações e Pets</a></li>
+                <li><a href="{{ url_for('sementes') }}">Sementes</a></li>
+                <li><a href="{{ url_for('ferragem') }}">Ferragem</a></li>
+                <li><a href="{{ url_for('contato') }}">Contato</a></li>
+                <li><a href="{{ url_for('novidades') }}">Novidades/Ofertas</a></li>
             </ul>
         </nav>
     </header>
@@ -31,18 +31,20 @@
                     <h3>Endereço:</h3>
                     <address>
                         Rua: José Luis, 1349 Centro<br>
-                        Montenegro, RS, Brasil
+                        Montenegro, RS, Brasil<br>
+                        <a href="https://maps.app.goo.gl/2iHU4PsyyCZuBqDB8" target="blank" style="display: flex; align-items: center; text-decoration:none; color:inherit; justify-content: center;">
+                            <img src="{{ url_for('static', filename='imagens/3838364.png') }}" width="30" alt="imagem de localização" style="margin-left: 5px;">
+                        </a>
                     </address>
                 </div>
                 <div>
                     <h3>Telefone:</h3>
                     <p>51 - 997210451</p>
-                    <p>
+                    <p class="whatsapp-container">
                         <a href="https://wa.me/5551997210451" target="_blank" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
-                            51997210451
                             <img src="{{ url_for('static', filename='imagens/unnamed.png') }}" width="30" alt="imagem de whatsapp" style="margin-left: 5px;">
-                            
                         </a>
+                    </p>
                     </p>
                 </div>
                 <div>
@@ -80,6 +82,10 @@
                     <div class="form-group">
                         <label for="email">E-mail:</label>
                         <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nascimento">Data de Nascimento: </label>
+                        <input type="date" id="aniversario" name="aniversario">
                     </div>
                     <button type="submit" class="button">Cadastrar</button>
                 </form>

@@ -11,12 +11,12 @@
         <h1>AgroFerragem Montenegro</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="racoes-e-pets.html">Rações e Pets</a></li>
-                <li><a href="sementes.html">Sementes</a></li>
-                <li><a href="ferragem.html">Ferragem</a></li>
-                <li><a href="contato.html">Contato</a></li>
-                <li><a href="novidades.html">Novidades/Ofertas</a></li>
+                <li><a href="{{ url_for('index') }}">Início</a></li>
+                <li><a href="{{ url_for('racoes_e_pets') }}">Rações e Pets</a></li>
+                <li><a href="{{ url_for('sementes') }}">Sementes</a></li>
+                <li><a href="{{ url_for('ferragem') }}">Ferragem</a></li>
+                <li><a href="{{ url_for('contato') }}">Contato</a></li>
+                <li><a href="{{ url_for('novidades') }}">Novidades/Ofertas</a></li>
             </ul>
         </nav>
     </header>

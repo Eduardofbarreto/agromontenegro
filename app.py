@@ -1,8 +1,11 @@
 from flask import Flask, request, render_template
 import sqlite3
+import logging
 
 app = Flask(__name__)
 DATABASE = 'banco.db'
+
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def get_db():
     conn = sqlite3.connect(DATABASE)
@@ -53,18 +56,35 @@ def cadastrar():
         telefone = request.form['telefone']
         cpf = request.form['cpf']
         email = request.form['email']
+        aniversario = request.form['aniversario']  # Obtém a data de aniversário do formulário
+
         conn = get_db()
         cursor = conn.cursor()
+        mensagem = ""
         try:
-            cursor.execute("INSERT INTO cadastros (nome, telefone, cpf, email) VALUES (?, ?, ?, ?)",
-                           (nome, telefone, cpf, email))
+            logging.debug(f"Dados recebidos do formulário: Nome={nome}, Telefone={telefone}, CPF={cpf}, Email={email}, Aniversario={aniversario}")
+            sql = "INSERT INTO cadastros (nome, telefone, cpf, email, aniversario) VALUES (?, ?, ?, ?, ?)"  # Inclui a coluna aniversario
+            logging.debug(f"Query SQL a ser executada: {sql}, com os valores: {(nome, telefone, cpf, email, aniversario)}")
+            cursor.execute(sql, (nome, telefone, cpf, email, aniversario))
             conn.commit()
+            logging.info(f"Cadastro realizado e commitado com sucesso para o email: {email} com aniversário: {aniversario}")
+            # --- Bloco de teste para verificar os dados ---
+            cursor.execute("SELECT * FROM cadastros WHERE email = ?", (email,))
+            resultados = cursor.fetchall()
+            logging.debug(f"Resultados do SELECT após o INSERT para o email {email}: {resultados}")
+            # --- Fim do bloco de teste ---
             mensagem = "Cadastro realizado com sucesso!"
+        except sqlite3.IntegrityError as e:
+            conn.rollback()
+            mensagem = f"Erro ao cadastrar (IntegrityError): {e}"
+            logging.error(f"Erro de integridade ao cadastrar o email {email}: {e}")
         except sqlite3.Error as e:
-            mensagem = f"Erro ao cadastrar: {e}"
+            conn.rollback()
+            mensagem = f"Erro ao cadastrar (Outro erro SQLite): {e}"
+            logging.error(f"Erro ao cadastrar o email {email}: {e}")
         finally:
             conn.close()
-        return render_template('cadastro_resultado.html', mensagem=mensagem)
+        return render_template('cadastro_resultado.html', mensagem=mensagem, aniversario=aniversario)
 
 if __name__ == '__main__':
     init_db()
