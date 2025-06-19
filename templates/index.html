@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgroFerragem Montenegro</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDxyIxEnP2FOZT+IyyULUOVRvn+d" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDxyIxENP2FOZT+IyyULUOVRvn+d" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <header>
         <h1>Agroferragem Montenegro</h1>
-            <nav>
-                <ul>
-                    <li><a href="{{ url_for('index') }}">Início</a></li>
-                    <li><a href="{{ url_for('racoes_e_pets') }}">Rações e Pets</a></li>
-                    <li><a href="{{ url_for('sementes') }}">Sementes</a></li>
-                    <li><a href="{{ url_for('ferragem') }}">Ferragem</a></li>
-                    <li><a href="{{ url_for('contato') }}">Contato</a></li>
-                    <li><a href="{{ url_for('novidades') }}">Novidades/Ofertas</a></li>
-                </ul>
-            </nav>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Início</a></li>
+                <li><a href="{{ url_for('racoes_e_pets') }}">Rações e Pets</a></li>
+                <li><a href="{{ url_for('sementes') }}">Sementes</a></li>
+                <li><a href="{{ url_for('ferragem') }}">Ferragem</a></li>
+                <li><a href="{{ url_for('contato') }}">Contato</a></li>
+                <li><a href="{{ url_for('novidades') }}">Novidades/Ofertas</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main class="container">
@@ -32,31 +32,31 @@
         <section id="racao-pets">
             <h2>Rações e Pets</h2>
             <p>Confira nossa variedade de rações de alta qualidade para cães e gatos, além de brinquedos divertidos e peixes beta.</p>
-            <p><a href="racoes-e-pets.html" class="button">Ver mais detalhes</a></p>
+            <p><a href="{{ url_for('racoes_e_pets') }}" class="button">Ver mais detalhes</a></p>
         </section>
 
         <section id="sementes">
             <h2>Sementes</h2>
             <p>Grande variedade de sementes para hortaliças, flores e muito mais para o seu plantio.</p>
-            <p><a href="sementes.html" class="button">Ver mais detalhes</a></p>
+            <p><a href="{{ url_for('sementes') }}" class="button">Ver mais detalhes</a></p>
         </section>
 
         <section id="ferragem">
             <h2>Ferragem</h2>
             <p>Encontre todos os tipos de ferramentas, materiais de construção e ferragens em geral.</p>
-            <p><a href="ferragem.html" class="button">Ver mais detalhes</a></p>
+            <p><a href="{{ url_for('ferragem') }}" class="button">Ver mais detalhes</a></p>
         </section>
 
         <section id="contato">
             <h2>Contato</h2>
             <p>Entre em contato conosco para dúvidas, orçamentos e informações.</p>
-            <p><a href="contato.html" class="button">Informações de contato</a></p>
+            <p><a href="{{ url_for('contato') }}" class="button">Informações de contato</a></p>
         </section>
 
         <section id="novidades">
             <h2>Novidades e Ofertas</h2>
             <p>Fique por dentro dos nossos últimos produtos e promoções especiais!</p>
-            <p><a href="novidades.html" class="button">Confira as novidades</a></p>
+            <p><a href="{{ url_for('novidades') }}" class="button">Confira as novidades</a></p>
         </section>
     </main>
 
@@ -64,6 +64,13 @@
         <p>&copy; 2025 AgroFerragem Montenegro</p>
     </footer>
 
-    <script src="script.js"></script>
+    <img src="{{ url_for('static', filename='imagens/nlBEikmgL85F.webp') }}" alt="Saco de Ração" class="imagem-lateral-esquerda">
+    <img src="{{ url_for('static', filename='imagens/sua_imagem_direita.jpg') }}" alt="Imagem Lateral Direita" class="imagem-lateral-direita">
+
+    <img id="dog-walker" src="{{ url_for('static', filename='imagens/dog_walking.gif') }}" alt="Cachorro andando">
+    <img id="cat-walker" src="{{ url_for('static', filename='imagens/cat_walking.gif') }}" alt="Gato andando">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDxyIxENP2FOZT+IyyULUOVRvn+d" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
