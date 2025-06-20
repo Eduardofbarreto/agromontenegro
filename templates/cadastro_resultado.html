@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultado do Cadastro</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Cadastro Realizado com Sucesso!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro_resultado_estilos.css') }}">   
 </head>
 <body>
-    <div class="container">
-        <h1>{{ mensagem }}</h1>
-        {% if mensagem == "Cadastro realizado com sucesso!" %}
-            <p>Seu cadastro foi realizado com sucesso!</p>
-            {% if aniversario_dia and aniversario_mes %}
-                <p>Data de Aniversário: {{ aniversario_dia }}/{{ aniversario_mes }}</p>
-            {% elif aniversario_dia %}
-                <p>Dia de Aniversário: {{ aniversario_dia }}</p>
-            {% elif aniversario_mes %}
-                <p>Mês de Aniversário: {{ aniversario_mes }}</p>
-            {% endif %}
+    <div class="success-container">
+        <h1>Cadastro realizado com sucesso!!</h1>
+
+        <p>Seja bem-vindo(a), **{{ nome }}**!</p>
+        <p>Estamos muito felizes em ter você conosco!</p>
+
+        {% if aniversario_dia and aniversario_mes %}
+            <p>Data de Aniversário: {{ aniversario_dia }}/{{ aniversario_mes }}</p>
+        {% elif aniversario_dia %}
+            <p>Dia de Aniversário: {{ aniversario_dia }}</p>
+        {% elif aniversario_mes %}
+            <p>Mês de Aniversário: {{ aniversario_mes }}</p>
         {% endif %}
-        <p><a href="/contato">Voltar a página de Contato</a></p>
+
+        <p class="mt-4">Vamos às compras??</p>
+        <a href="{{ url_for('index') }}" class="button">Explorar Produtos!</a>
     </div>
 </body>
 </html>

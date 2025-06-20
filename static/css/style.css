@@ -346,3 +346,7 @@ footer p{
 .telefone p strong {
     font-size: 1.2em;
 }
+
+.sucess-container h1{
+    text-align: center;
+}
