@@ -3,19 +3,19 @@
 
 /* --- Estilos Globais e Sticky Footer --- */
 html, body {
-    height: 100%; /* Faz o html e o body ocuparem 100% da altura da viewport */
+    height: 100%;
     margin: 0;
     padding: 0;
     font-family: 'Open Sans', sans-serif;
     background-color: #ef7120;
     color: #333;
-    display: flex; /* Transforma o body em um container flexbox */
-    flex-direction: column; /* Organiza os itens em coluna */
+    /* Remover display: flex; flex-direction: column; do body, pois o layout principal agora é gerido pelo Bootstrap no HTML */
 }
 
-.container { /* Este é o container do seu conteúdo principal */
-    max-width: 960px;
-    margin: 20px auto;
+/* O .container no HTML ainda é seu container de conteúdo principal, ele vai ser centralizado */
+.container {
+    max-width: 960px; /* Mantém sua largura máxima desejada para o conteúdo principal */
+    margin: 20px auto; /* Centraliza o conteúdo principal */
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -28,7 +28,6 @@ header {
     padding: 1em 0;
     text-align: center;
     border-radius: 8px 8px 0 0;
-    /* Remover 'margin-top: auto;' ou qualquer posicionamento que puxe para cima */
 }
 
 header h1 {
@@ -61,8 +60,7 @@ nav ul li a:hover {
 }
 
 main {
-    flex: 1; /* Faz o conteúdo principal ocupar todo o espaço restante disponível */
-    /* Remove 'padding-bottom' aqui, vamos usar o espaçamento do footer */
+    /* flex: 1; já foi movido para o row flex-grow-1 no HTML com Bootstrap */
 }
 
 main section {
@@ -82,45 +80,49 @@ main section h2 {
     font-weight: 400;
 }
 
+---
 /* --- Rodapé --- */
 footer {
-    /* O 'position: relative;' ou 'fixed' ou 'absolute' DEVE SER REMOVIDO daqui */
-    /* O Flexbox no body já vai posicionar ele no final */
     width: 100%;
-    height: 80px; /* Mantenha esta altura ou ajuste para a real do seu rodapé */
+    height: 80px;
     background-color: #000000;
     color: #fff;
-    text-align: center;
+    text-align: center; /* CENTRALIZA O TEXTO DO RODAPÉ */
     padding: 1em 0;
     border-radius: 0 0 8px 8px;
     font-size: 0.9em;
-    margin-top: 0; /* Remova qualquer margin-top que possa ter sido adicionada */
-    flex-shrink: 0; /* Garante que o rodapé não encolha */
-    z-index: 100; /* Garante que o rodapé fique abaixo dos pets, se necessário */
-    box-sizing: border-box; /* Inclui padding na altura total */
+    margin-top: 0;
+    flex-shrink: 0;
+    z-index: 100;
+    box-sizing: border-box;
 }
 
-/* --- Estilos dos Pets (Cachorro e Gato) --- */
+footer p{
+    text-align: center;
+}
+
+---
+/* --- Estilos dos Pets (Cachorro e Gato) - POSIÇÃO FIXA NO SITE --- */
 #dog-walker, #cat-walker {
-    position: fixed; /* Mantenha 'fixed' para eles se moverem independentemente da rolagem */
-    /* REMOVA AS PROPRIEDADES 'bottom', 'left', e 'transform' AQUI NO CSS. */
-    /* Elas serão controladas inteiramente pelo JavaScript. */
-    z-index: 1000;   /* Garante que fiquem acima de outros elementos, inclusive o rodapé */
-    height: 120px;   /* Ajuste para o tamanho desejado para AMBOS */
-    width: auto;    /* Mantém a proporção */
-    display: none;   /* Escondidos inicialmente */
+    position: fixed; /* Essencial para flutuar sobre o conteúdo */
+    z-index: 1000;
+    height: auto; /* O JS definirá a altura base */
+    width: auto;
+    display: none; /* Inicia oculto, o JS vai mostrar quando necessário */
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.8));
+    transition: transform 0.1s linear; /* Adiciona uma transição suave ao virar */
 }
 
-/* Remova a regra específica para #cat-walker se quiser que eles tenham o mesmo tamanho */
-/* Se quiser tamanhos diferentes, defina aqui, mas o JS ainda controla a posição */
+#dog-walker {
+    height: 140px; /* Altura original do cachorro */
+}
+
 #cat-walker {
-    /* bottom: 50px; -- REMOVER */
-    height: 90px; /* Exemplo: gato um pouco maior. O JS ainda controla o 'bottom' */
+    height: 70px; /* Altura original do gato */
 }
 
-
-/* --- Demais estilos do seu projeto (MANTENHA-OS) --- */
-/* Estilos específicos para o conteúdo (você pode ajustar conforme necessário) */
+---
+/* --- Demais estilos do seu projeto --- */
 #inicio p {
     font-size: 1.1em;
     line-height: 1.6;
@@ -148,7 +150,7 @@ footer {
 
 .contato-detalhes h3 {
     color: #A0522D;
-    margin-top: 0;
+    margin-top: -10px;
     margin-bottom: 5px;
     font-size: 1.2em;
     font-family: 'Oswald', sans-serif;
@@ -172,10 +174,30 @@ footer {
     text-decoration: underline;
 }
 
-#contato address {
+/* Specific styling for the address within contato-detalhes */
+.contato-detalhes address {
     font-style: normal;
-    line-height: 1.5;
-    color: #555;
+    line-height: 1.6;
+    color: #000000;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.contato-detalhes address a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+    margin-top: 5px;
+}
+
+.contato-detalhes address img {
+    margin-left: 0;
 }
 
 #contato-info {
@@ -196,31 +218,8 @@ footer {
     text-align: center;
 }
 
-.contato-detalhes address {
-    line-height: 1.6;
-    color: #555;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.contato-detalhes address a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: inherit;
-    margin-top: 5px;
-}
-
-.contato-detalhes address img {
-    margin-left: 0;
-}
-
 #contato-info h3 {
-    color: #556B2F;
+    color: #000000;
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 1.5em;
@@ -303,19 +302,47 @@ footer {
     color: #555;
 }
 
-.imagem-lateral-esquerda, .imagem-lateral-direita {
-    position: fixed; /* Gruda a imagem na tela */
-    width: 150px;      /* Ajuste o tamanho conforme necessário */
-    height: auto;     /* Mantém a proporção */
-    z-index: 500;      /* Coloca as imagens atrás dos pets (z-index: 1000) e do rodapé (z-index: 100) */
-    top: 50%;          /* Centraliza verticalmente */
-    transform: translateY(-50%); /* Ajusta o centro vertical */
+---
+/* --- Estilos para as Imagens Laterais (Sacos) --- */
+.img-saco-lateral {
+    object-fit: contain; /* Garante que a imagem se ajuste sem cortar ou esticar */
+    margin-top: 0; /* Garante que não haja margem superior extra */
+    margin-bottom: auto; /* Empurra para o topo se a coluna for um flex container */
 }
 
-.imagem-lateral-esquerda {
-    left: 20px;       /* Distância da borda esquerda */
+/* Regras específicas para ambas as imagens laterais */
+.imagem-lateral-esquerda.img-saco-lateral,
+.imagem-lateral-direita.img-saco-lateral {
+    max-width: 100px; /* Tamanho final para ambas as imagens */
+    max-height: 150px; /* Tamanho final para ambas as imagens */
 }
 
-.imagem-lateral-direita {
-    right: 20px;      /* Distância da borda direita */
+/* Alinha as colunas laterais ao topo da linha */
+.container-fluid > .row > .col-xxl-2 {
+    align-self: flex-start; /* Alinha esta coluna em particular ao topo dentro da linha flex */
+}
+
+/* Garante que o container da linha esteja alinhando seus itens ao topo */
+.container-fluid > .row {
+    align-items: flex-start; /* Alinha os itens (as colunas) ao início do container flex */
+}
+
+
+---
+
+/* Specific styles for elements within .email and .telefone divs */
+.email p, .telefone p {
+    font-size: 1em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: black;
+}
+
+.email a {
+    color: black;
+    font-size: small;
+}
+
+.telefone p strong {
+    font-size: 1.2em;
 }

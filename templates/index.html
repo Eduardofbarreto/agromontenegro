@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <h1>Agroferragem Montenegro</h1>
+        <h1>AgroFerragem Montenegro</h1>
         <nav>
             <ul>
                 <li><a href="{{ url_for('index') }}">Início</a></li>
@@ -22,52 +22,64 @@
         </nav>
     </header>
 
-    <main class="container">
-        <section id="inicio">
-            <h2>Bem-vindo à AgroFerragem Montenegro!</h2>
-            <p>Seu parceiro completo para agropecuária e ferragem em Montenegro e região.</p>
-            <p>Encontre tudo o que você precisa para sua lavoura, seus animais de estimação e para seus projetos de construção e reparo.</p>
-        </section>
+    <div class="container-fluid d-flex flex-column min-vh-100">
+        <div class="row flex-grow-1">
+            <div class="col-xxl-2 d-none d-xxl-flex align-items-center justify-content-center">
+                <img src="{{ url_for('static', filename='imagens/nlBEikmgL85F.webp') }}" alt="Saco de Ração" class="img-fluid img-saco-lateral imagem-lateral-esquerda">
+            </div>
 
-        <section id="racao-pets">
-            <h2>Rações e Pets</h2>
-            <p>Confira nossa variedade de rações de alta qualidade para cães e gatos, além de brinquedos divertidos e peixes beta.</p>
-            <p><a href="{{ url_for('racoes_e_pets') }}" class="button">Ver mais detalhes</a></p>
-        </section>
+            <div class="col-12 col-xxl-8">
+                <main class="container"> <section id="inicio">
+                        <h2>Bem-vindo à AgroFerragem Montenegro!</h2>
+                        <p>Seu parceiro completo para agropecuária e ferragem em Montenegro e região.</p>
+                        <p>Encontre tudo o que você precisa para sua lavoura, seus animais de estimação e para seus projetos de construção e reparo.</p>
+                    </section>
 
-        <section id="sementes">
-            <h2>Sementes</h2>
-            <p>Grande variedade de sementes para hortaliças, flores e muito mais para o seu plantio.</p>
-            <p><a href="{{ url_for('sementes') }}" class="button">Ver mais detalhes</a></p>
-        </section>
+                    <section id="racao-pets">
+                        <h2>Rações e Pets</h2>
+                        <p>Confira nossa variedade de rações de alta qualidade para cães e gatos, além de brinquedos divertidos e peixes beta.</p>
+                        <p><a href="{{ url_for('racoes_e_pets') }}" class="button">Ver mais detalhes</a></p>
+                    </section>
 
-        <section id="ferragem">
-            <h2>Ferragem</h2>
-            <p>Encontre todos os tipos de ferramentas, materiais de construção e ferragens em geral.</p>
-            <p><a href="{{ url_for('ferragem') }}" class="button">Ver mais detalhes</a></p>
-        </section>
+                    <section id="sementes">
+                        <h2>Sementes</h2>
+                        <p>Grande variedade de sementes para hortaliças, flores e muito mais para o seu plantio.</p>
+                        <p><a href="{{ url_for('sementes') }}" class="button">Ver mais detalhes</a></p>
+                    </section>
 
-        <section id="contato">
-            <h2>Contato</h2>
-            <p>Entre em contato conosco para dúvidas, orçamentos e informações.</p>
-            <p><a href="{{ url_for('contato') }}" class="button">Informações de contato</a></p>
-        </section>
+                    <section id="ferragem">
+                        <h2>Ferragem</h2>
+                        <p>Encontre todos os tipos de ferramentas, materiais de construção e ferragens em general.</p>
+                        <p>
+                            <a href="{{ url_for('ferragem') }}" class="button">Ver mais detalhes</a>
+                        </p>
+                    </section>
 
-        <section id="novidades">
-            <h2>Novidades e Ofertas</h2>
-            <p>Fique por dentro dos nossos últimos produtos e promoções especiais!</p>
-            <p><a href="{{ url_for('novidades') }}" class="button">Confira as novidades</a></p>
-        </section>
-    </main>
+                    <section id="contato">
+                        <h2>Contato</h2>
+                        <p>Entre em contato conosco para dúvidas, orçamentos e informações.</p>
+                        <p><a href="{{ url_for('contato') }}" class="button">Informações de contato</a></p>
+                    </section>
+
+                    <section id="novidades">
+                        <h2>Novidades e Ofertas</h2>
+                        <p>Fique por dentro dos nossos últimos produtos e promoções especiais!</p>
+                        <p><a href="{{ url_for('novidades') }}" class="button">Confira as novidades</a></p>
+                    </section>
+                </main>
+            </div>
+
+            <div class="col-xxl-2 d-none d-xxl-flex align-items-center justify-content-center">
+                <img src="{{ url_for('static', filename='imagens/pedigree.png') }}" alt="Imagem Lateral Direita" class="img-fluid img-saco-lateral imagem-lateral-direita">
+            </div>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2025 AgroFerragem Montenegro</p>
     </footer>
 
-    <img src="{{ url_for('static', filename='imagens/nlBEikmgL85F.webp') }}" alt="Saco de Ração" class="imagem-lateral-esquerda">
-    <img src="{{ url_for('static', filename='imagens/sua_imagem_direita.jpg') }}" alt="Imagem Lateral Direita" class="imagem-lateral-direita">
-
-    <img id="dog-walker" src="{{ url_for('static', filename='imagens/dog_walking.gif') }}" alt="Cachorro andando">
+    <img id="dog-walker" src="{{ url_for('static', filename='imagens/dog_walking.gif')}}" alt="Cachorro andando">
     <img id="cat-walker" src="{{ url_for('static', filename='imagens/cat_walking.gif') }}" alt="Gato andando">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDxyIxENP2FOZT+IyyULUOVRvn+d" crossorigin="anonymous"></script>
